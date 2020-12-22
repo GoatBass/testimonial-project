@@ -1,7 +1,9 @@
   const customerImage = document.querySelector('#customer-img')
     const customerName = document.querySelector('#customer-name')
     const customerText = document.querySelector('#customer-text')
-    const buttons = document.querySelectorAll('.btn')
+    const rightBtn = document.querySelector('.nextBtn')
+    const leftBtn = document.querySelector('.prevBtn')
+
     let index = 0
     const customers = []
 
@@ -32,4 +34,27 @@
     createCustomer(4, 'Wanda', 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.')
     
     // Fíjate bien en la estructura de este array de objetos. Identifica cuantas posiciones tiene y el nombre de cada una de sus propiedades
-    console.log(customers)
+    let count = 0;
+   rightBtn.addEventListener('click', function(){
+      if(count < customers.length -1){
+        count++
+        customerImage.src = customers[count].img
+        customerName.innerHTML = customers[count].name
+        customerText.innerHTML = customers[count].text
+      } else {
+        count = 0
+        customerImage.src = customers[count].img
+        customerName.innerHTML = customers[count].name
+        customerText.innerHTML = customers[count].text
+      }
+    })
+
+    leftBtn.addEventListener('click', function(){
+      if(count == 0){
+        count = 5
+      }
+        count --
+        customerImage.src = customers[count].img
+        customerName.innerHTML = customers[count].name
+        customerText.innerHTML = customers[count].text
+    })
